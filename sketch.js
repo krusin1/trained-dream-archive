@@ -161,7 +161,7 @@ async function showAnimal(animal) {
         const randomPost = posts[Math.floor(Math.random() * posts.length)];
         postTitle.textContent = randomPost.title;
         postBody.textContent = randomPost.body;
-        postImages.innerHTML = "";
+        //postImages.innerHTML = "";
 
         // if (randomPost.images) {
         //     randomPost.images.forEach(imgPath => {
