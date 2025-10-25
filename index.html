@@ -135,6 +135,9 @@
     width: 90%; 
     border-radius: 8px;
     position: relative;
+
+    max-height: 60vh; /* Set a maximum height for the text (e.g., 40% of the viewport height) */
+    overflow-y: auto;
   }
   .close {
     position: absolute; 
@@ -159,7 +162,7 @@
 
 <canvas id="sketch-canvas"></canvas>
 <div id="donut"></div>
-<div id="yellow-light" align="center">pick a shadow<br>creature to make</div>
+<div id="yellow-light" align="center">use your hand<br> to make a shadow creature</div>
 
 <!-- Arc of images -->
 <div id="arc-container">
@@ -189,6 +192,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.dom.min.js"></script>
 <script src="https://unpkg.com/ml5@1/dist/ml5.min.js"></script>
 <script src="sketch.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
 
 </body>
 </html>
