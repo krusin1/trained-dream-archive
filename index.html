@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bedtime Story Puppets</title>
+<style>
+  body { font-family: sans-serif; padding: 20px; background-color: #011638; color: #fff; }
+  h1 { text-align: center;
+  font-family: Garamond, Georgia, serif; }
+
+   p { text-align: center;
+  font-family: 'Montserrat', sans-serif;}
+  #yellow-light {
+    position:absolute; width:250px; height:250px; background:#eec643; 
+    border-radius:50%; top:60%; left:50%; transform:translate(-50%,-50%);
+    font-family: Garamond, Georgia, serif; font-size:20px;
+    display:flex; align-items:center; justify-content:center; color:#000; font-style: italic;
+    z-index: 10;
+  }
+
+   p.heading{
+    text-align: center;
+  font-family: Garamond, Georgia, serif; 
+  font-size: 30px;
+  line-height: 0%;
+
+   }
+
+  #donut {
+    position: fixed;       
+    top: 60%;              
+    left: 20%;            
+    transform: translate(-50%, -50%); 
+    width: 280px;
+    height: 280px;
+    border-radius: 80%;
+    border: 160px solid #011638; 
+    z-index: 9;    
+  }
+
+  /* Container for arc images */
+  #arc-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 400px;
+    pointer-events: none; /* don't block clicks */
+  }
+
+  #arc-container img {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  
+ 
+  #arc-container img:nth-child(1)  { position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;top: -5%;   left: 80%; }
+  #arc-container img:nth-child(2)  { position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    top: 20%;  left: 100%; }
+  #arc-container img:nth-child(3)  { position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;top: 50%;  left: 115%; }
+
+  #arc-container img:nth-child(4)  { position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    top: 80%;  left: 100%; }
+  #arc-container img:nth-child(5)  { position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    top: 105%;  left: 80%; }
+  #arc-container img:nth-child(6)  { position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    top: -10%;  left: 130%; }
+  #arc-container img:nth-child(7)  { position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    top: 15%;  left: 150%; }
+  #arc-container img:nth-child(8)  { position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    top: 48%; left: 165%; }
+  #arc-container img:nth-child(9)  { position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    top: 80%; left: 150%; }
+  #arc-container img:nth-child(10) { position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    top: 110%; left: 125%; }
+
+ 
+  .popup {
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
+    left: 0; top: 0; 
+    width: 100%; height: 100%; 
+    background-color: rgba(1, 22, 56,0.7); 
+    justify-content: center; 
+    align-items: center;
+  }
+  .popup-content {
+    background: #011638; 
+    color: #fff;
+    padding: 20px; 
+    max-width: 600px; 
+    width: 90%; 
+    border-radius: 8px;
+    position: relative;
+  }
+  .close {
+    position: absolute; 
+    top: 10px; right: 15px; 
+    font-size: 20px; 
+    cursor: pointer;
+  }
+  .images-container img {
+    max-width: 100px; 
+    margin-right: 10px;
+    display: inline-block;
+  }
+
+  canvas { display: block; margin: 0 auto; }
+</style>
+</head>
+<body>
+
+<p class="heading">dream a <i>dream</i></p>
+
+<p>As night falls tonight, a yellow circle of light appears.<br>Hold up a hand and make a shadow creature to<br>reveal what dreams await</p>
+
+<canvas id="sketch-canvas"></canvas>
+<div id="donut"></div>
+<div id="yellow-light" align="center">pick a shadow<br>creature to make</div>
+
+<!-- Arc of images -->
+<div id="arc-container">
+  <img src="other/cat.jpeg" alt="cat">
+  <img src="other/rabbit.jpeg" alt="rabbit">
+  <img src="other/horse.jpeg" alt="horse">
+  <img src="other/snake.jpeg" alt="snake">
+  <img src="other/elephant.jpg" alt="elephant">
+  <img src="other/deer.jpeg" alt="deer">
+  <img src="other/fish.jpeg" alt="fish">
+  <img src="other/flower.jpeg" alt="flower">
+  <img src="other/dog.jpeg" alt="dog">
+  <img src="other/bird.jpeg" alt="bird">
+</div>
+
+<!-- Modal -->
+<div id="popup" class="popup">
+  <div class="popup-content">
+    <span id="close" class="close">&times;</span>
+    <h3 id="post-title"></h3>
+    <p id="post-body"></p>
+    <div id="post-images" class="images-container"></div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.dom.min.js"></script>
+<script src="https://unpkg.com/ml5@1/dist/ml5.min.js"></script>
+<script src="sketch.js"></script>
+
+</body>
+</html>
+
+
+

@@ -1,0 +1,23 @@
+[project]
+name = "data-archive-project"
+version = "0.1.0"
+description = "AI Dream Generator with Gesture-Controlled Dream Creation"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "pandas>=2.3.3",
+    "playwright>=1.55.0",
+    "requests>=2.32.5",
+    "transformers>=4.21.0",
+    "torch>=1.12.0",
+    "datasets>=2.0.0",
+    "flask>=2.0.0",
+    "flask-cors>=3.0.0",
+    "numpy>=1.21.0",
+    "scikit-learn>=1.0.0",
+    "transformers[torch]>=4.57.0",
+]
+[tool.setuptools.packages]
+# This section tells the build system to only look for packages (code) in the main project folder
+# while explicitly ignoring the data folders ('other' and 'images') that were causing the error.
+find = { exclude = ["other", "images", "tests*"] }
